@@ -1,0 +1,443 @@
+2021-08-25 15:56:46,451 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-25 15:56:46,451 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-08-25 15:56:46,452 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2021-08-25 15:56:46,472 INFO c.v.c.PaymentController [http-nio-8080-exec-2] PaymentRequest : 1601353776839FT19310RH6P1
+2021-08-25 15:56:46,486 ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] [http-nio-8080-exec-2] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: non null hash key required] with root cause
+java.lang.IllegalArgumentException: non null hash key required
+	at org.springframework.util.Assert.notNull(Assert.java:201) ~[spring-core-5.3.9.jar:5.3.9]
+	at org.springframework.data.redis.core.AbstractOperations.rawHashKey(AbstractOperations.java:162) ~[spring-data-redis-2.5.4.jar:2.5.4]
+	at org.springframework.data.redis.core.DefaultHashOperations.put(DefaultHashOperations.java:188) ~[spring-data-redis-2.5.4.jar:2.5.4]
+	at com.vnpay.repositoryImpl.PaymentRepositoryImpl.save(PaymentRepositoryImpl.java:35) ~[classes/:?]
+	at com.vnpay.repositoryImpl.PaymentRepositoryImpl$$FastClassBySpringCGLIB$$e0f55877.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.9.jar:5.3.9]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779) ~[spring-aop-5.3.9.jar:5.3.9]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.9.jar:5.3.9]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.9.jar:5.3.9]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-5.3.9.jar:5.3.9]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.9.jar:5.3.9]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.9.jar:5.3.9]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692) ~[spring-aop-5.3.9.jar:5.3.9]
+	at com.vnpay.repositoryImpl.PaymentRepositoryImpl$$EnhancerBySpringCGLIB$$9d481fde.save(<generated>) ~[classes/:?]
+	at com.vnpay.controller.PaymentController.addPayment(PaymentController.java:74) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_291]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_291]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_291]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_291]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1064) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.52.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.52.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_291]
+2021-08-25 16:14:34,905 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:14:34,906 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:14:34,906 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:14:35,008 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:14:35,008 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:14:35,009 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:14:35,070 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:14:35,070 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:14:35,070 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:14:35,078 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:14:35,157 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:14:35,162 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.298 seconds (JVM running for 1897.375)
+2021-08-25 16:16:28,521 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:16:28,522 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:16:28,522 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:16:28,624 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:16:28,624 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:16:28,625 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:16:28,686 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:16:28,686 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:16:28,686 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:16:28,697 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:16:28,770 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:16:28,776 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.297 seconds (JVM running for 2010.99)
+2021-08-25 16:16:48,588 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:16:48,589 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:16:48,589 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:16:48,689 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:16:48,689 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:16:48,690 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:16:48,733 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:16:48,733 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:16:48,733 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:16:48,743 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:16:48,823 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:16:48,829 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.279 seconds (JVM running for 2031.042)
+2021-08-25 16:17:54,862 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:17:54,863 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:17:54,863 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:17:54,960 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:17:54,961 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:17:54,961 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:17:55,018 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:17:55,018 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:17:55,019 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:17:55,028 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:17:55,099 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:17:55,104 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.281 seconds (JVM running for 2097.317)
+2021-08-25 16:18:44,047 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:18:44,048 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:18:44,048 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:18:44,145 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:18:44,146 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:18:44,147 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:18:44,204 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:18:44,205 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:18:44,205 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:18:44,214 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:18:44,285 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:18:44,290 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.279 seconds (JVM running for 2146.504)
+2021-08-25 16:20:20,489 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:20:20,489 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:20:20,490 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:20:20,588 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:20:20,588 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:20:20,589 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:20:20,648 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:20:20,649 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:20:20,649 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:20:20,658 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:20:20,731 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:20:20,737 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.286 seconds (JVM running for 2242.951)
+2021-08-25 16:21:37,708 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-25 16:21:37,708 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-08-25 16:21:37,710 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 2 ms
+2021-08-25 16:21:37,726 INFO c.v.c.PaymentController [http-nio-8080-exec-2] PaymentRequest : 1601353776839FT19310RH6P1
+2021-08-25 16:22:20,055 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:22:20,055 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:22:20,055 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:22:20,152 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:22:20,152 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:22:20,153 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:22:20,210 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:22:20,211 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:22:20,211 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:22:20,219 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:22:20,292 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:22:20,298 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.279 seconds (JVM running for 2362.512)
+2021-08-25 16:23:02,207 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:23:02,207 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:23:02,207 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:23:02,301 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:23:02,301 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:23:02,302 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:23:02,362 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:23:02,362 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:23:02,362 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:23:02,371 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:23:02,443 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:23:02,449 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.274 seconds (JVM running for 2404.662)
+2021-08-25 16:23:14,161 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:23:14,162 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:23:14,162 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:23:14,253 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:23:14,253 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:23:14,254 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:23:14,293 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:23:14,293 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:23:14,293 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:23:14,302 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:23:14,371 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:23:14,375 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.248 seconds (JVM running for 2416.589)
+2021-08-25 16:24:11,035 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-25 16:24:11,035 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-08-25 16:24:11,036 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2021-08-25 16:24:11,053 ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] [http-nio-8080-exec-2] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at com.vnpay.controller.PaymentController.findPayment(PaymentController.java:73) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_291]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_291]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_291]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_291]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1064) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655) ~[tomcat-embed-core-9.0.52.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.9.jar:5.3.9]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.52.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.9.jar:5.3.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.52.jar:9.0.52]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_291]
+2021-08-25 16:28:43,705 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:28:43,706 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:28:43,706 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:28:43,807 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:28:43,807 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:28:43,808 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:28:43,868 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:28:43,869 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:28:43,869 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:28:43,879 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:28:43,949 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:28:43,953 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.289 seconds (JVM running for 2746.167)
+2021-08-25 16:32:18,794 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:32:18,795 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:32:18,795 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:32:18,902 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:32:18,902 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:32:18,903 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:32:18,969 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:32:18,970 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:32:18,970 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:32:18,979 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:32:19,075 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:32:19,079 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.324 seconds (JVM running for 2961.292)
+2021-08-25 16:32:27,270 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-25 16:32:27,270 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-08-25 16:32:27,270 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2021-08-25 16:32:27,284 INFO c.v.c.PaymentController [http-nio-8080-exec-2] PaymentRequest : 1601353776839FT19310RH6P1
+2021-08-25 16:33:13,117 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:33:13,117 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:33:13,117 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:33:13,216 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:33:13,217 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:33:13,217 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:33:13,271 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:33:13,271 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:33:13,271 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:33:13,280 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:33:13,349 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:33:13,353 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.271 seconds (JVM running for 3015.567)
+2021-08-25 16:33:17,039 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-25 16:33:17,039 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-08-25 16:33:17,040 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2021-08-25 16:35:02,578 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:35:02,579 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:35:02,579 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:35:02,679 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:35:02,679 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:35:02,680 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:35:02,737 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:35:02,737 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:35:02,737 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:35:02,746 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:35:02,814 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:35:02,818 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.273 seconds (JVM running for 3125.032)
+2021-08-25 16:35:07,509 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:35:07,509 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:35:07,509 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:35:07,596 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:35:07,596 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:35:07,597 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:35:07,634 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:35:07,634 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:35:07,634 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:35:07,642 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:35:07,711 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:35:07,715 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.237 seconds (JVM running for 3129.928)
+2021-08-25 16:35:20,673 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-25 16:35:20,673 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-08-25 16:35:20,674 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2021-08-25 16:35:20,685 INFO c.v.c.PaymentController [http-nio-8080-exec-2] PaymentRequest : 1601353776839FT19310RH6P1
+2021-08-25 16:38:00,278 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:38:00,278 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:38:00,278 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:38:00,372 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:38:00,372 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:38:00,373 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:38:00,431 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:38:00,432 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:38:00,432 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:38:00,440 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:38:00,505 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:38:00,510 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.266 seconds (JVM running for 3302.723)
+2021-08-25 16:38:11,820 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-25 16:38:11,820 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-08-25 16:38:11,821 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2021-08-25 16:38:11,834 INFO c.v.c.PaymentController [http-nio-8080-exec-2] PaymentRequest : 1601353776839FT19310RH6P1
+2021-08-25 16:41:43,340 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:41:43,341 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:41:43,341 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:41:43,432 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:41:43,432 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:41:43,433 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:41:43,492 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:41:43,492 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:41:43,492 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:41:43,501 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:41:43,567 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:41:43,572 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.266 seconds (JVM running for 3525.786)
+2021-08-25 16:43:47,874 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:43:47,875 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:43:47,875 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:43:47,967 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:43:47,967 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:43:47,969 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:43:48,025 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:43:48,026 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:43:48,026 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:43:48,034 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:43:48,097 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:43:48,102 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.264 seconds (JVM running for 3650.315)
+2021-08-25 16:47:12,654 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:47:12,655 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:47:12,655 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:47:12,754 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:47:12,754 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:47:12,755 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:47:12,810 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:47:12,811 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:47:12,811 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:47:12,820 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:47:12,898 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:47:12,902 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.279 seconds (JVM running for 3855.115)
+2021-08-25 16:50:16,413 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:50:16,414 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:50:16,414 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:50:16,517 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:50:16,518 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:50:16,519 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:50:16,576 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:50:16,576 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:50:16,577 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:50:16,586 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:50:16,656 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:50:16,661 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.283 seconds (JVM running for 4038.874)
+2021-08-25 16:52:38,911 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:52:38,912 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:52:38,912 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:52:39,008 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:52:39,008 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:52:39,009 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:52:39,072 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:52:39,072 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:52:39,072 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:52:39,081 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:52:39,157 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:52:39,162 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.283 seconds (JVM running for 4181.376)
+2021-08-25 16:53:56,270 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:53:56,270 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:53:56,270 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:53:56,368 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:53:56,368 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:53:56,369 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:53:56,426 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:53:56,426 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:53:56,426 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:53:56,436 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:53:56,505 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:53:56,509 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.272 seconds (JVM running for 4258.723)
+2021-08-25 16:55:03,474 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:55:03,474 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:55:03,474 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:55:03,566 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:55:03,566 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:55:03,567 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:55:03,621 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:55:03,622 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:55:03,622 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:55:03,631 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:55:03,695 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:55:03,701 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.26 seconds (JVM running for 4325.914)
+2021-08-25 16:55:29,481 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:55:29,481 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:55:29,481 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:55:29,566 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:55:29,566 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:55:29,567 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:55:29,603 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:55:29,603 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:55:29,603 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:55:29,612 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:55:29,674 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:55:29,679 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.228 seconds (JVM running for 4351.893)
+2021-08-25 16:55:44,270 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-25 16:55:44,270 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-08-25 16:55:44,270 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2021-08-25 16:55:44,281 INFO c.v.c.PaymentController [http-nio-8080-exec-2] PaymentRequest: 1601353776839FT19310RH6P1
+2021-08-25 16:56:23,650 INFO c.v.s.DemoV1Application [restartedMain] Starting DemoV1Application using Java 1.8.0_291 on DESKTOP-AN70OMJ with PID 2552 (D:\Proj\demoPayment\target\classes started by Cong doan in D:\Proj\demoPayment)
+2021-08-25 16:56:23,650 DEBUG c.v.s.DemoV1Application [restartedMain] Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-08-25 16:56:23,650 INFO c.v.s.DemoV1Application [restartedMain] The following profiles are active: prod
+2021-08-25 16:56:23,740 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-08-25 16:56:23,740 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-08-25 16:56:23,741 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2021-08-25 16:56:23,804 INFO o.a.c.h.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:56:23,804 INFO o.a.c.c.StandardService [restartedMain] Starting service [Tomcat]
+2021-08-25 16:56:23,804 INFO o.a.c.c.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-08-25 16:56:23,814 INFO o.a.c.c.C.[.[.[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-25 16:56:23,882 INFO o.a.c.h.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-08-25 16:56:23,887 INFO c.v.s.DemoV1Application [restartedMain] Started DemoV1Application in 0.268 seconds (JVM running for 4406.1)
+2021-08-25 16:56:28,092 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-25 16:56:28,093 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-08-25 16:56:28,093 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2021-08-25 16:56:28,104 INFO c.v.c.PaymentController [http-nio-8080-exec-2] PaymentRequest: 1601353776839FT19310RH6P1
+2021-08-25 16:57:58,664 INFO c.v.c.PaymentController [http-nio-8080-exec-4] PaymentRequest: 1601353776839FT19310RH6P2

@@ -12,25 +12,25 @@ public class PaymentRequest {
 	@NotNull
 	String apiID;
 	@NotNull
-	long mobile;
+	String mobile;
 	@NotNull
-	long bankCode;
+	String bankCode;
 	@NotNull
-	long accountNo;
+	String accountNo;
 	@NotNull
-	long payDate;
+	String payDate;
 	@NotNull
 	String additionalData;
 	@NotNull
 	long debitAmount;
 	@NotNull
-	int respCode;
+	String respCode;
 	@NotNull
 	String respDesc;
 	@NotNull
 	String traceTransfer;
 	@NotNull
-	int messageType;
+	String messageType;
 	@NotNull
 	String checkSum;
 	@NotNull

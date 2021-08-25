@@ -32,11 +32,11 @@ public class PaymentRepositoryImpl implements PaymentRepository{
 	
 	public void save(Payment payment) {
 		// TODO Auto-generated method stub
-		hashOperations.put(KEY, payment.getId(), payment);
+		hashOperations.put(KEY, payment.getTokenKey(), payment);
 	}
-	public Payment find(Long id) {
+	public Payment find(String tokenKey) {
 		// TODO Auto-generated method stub
-		return (Payment) hashOperations.get(KEY, id);
+		return (Payment) hashOperations.get(KEY, tokenKey);
 	}
 
 }

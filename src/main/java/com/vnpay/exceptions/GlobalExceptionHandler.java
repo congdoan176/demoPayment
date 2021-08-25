@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,8 +16,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.vnpay.controller.PaymentController;
+
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+	private static Logger logger = LogManager.getLogger(PaymentController.class);
 	  @Override
 	  protected ResponseEntity<Object> handleMethodArgumentNotValid(
 	      MethodArgumentNotValidException ex, HttpHeaders headers,
@@ -28,7 +33,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	        .stream()
 	        .map(DefaultMessageSourceResolvable::getDefaultMessage)
 	        .collect(Collectors.toList());
-	    	System.out.println("error: " + errors);
+	    	logger.error("MethodArgumentNotValidException: "+errors);
 	    body.put("code", String.valueOf(01));
 	    
 	    return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);

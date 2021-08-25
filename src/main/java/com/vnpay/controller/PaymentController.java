@@ -1,10 +1,15 @@
 package com.vnpay.controller;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,37 +21,65 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vnpay.api.PaymentRequest;
+import com.vnpay.api.PaymentResponse;
 import com.vnpay.config.YamlBankProperties;
 import com.vnpay.model.Bank;
 import com.vnpay.model.Payment;
 import com.vnpay.repositoryImpl.PaymentRepositoryImpl;
+import com.vnpay.util.sha256Hmac;
 
 @RestController
 public class PaymentController {
-	
-	@Autowired PaymentRepositoryImpl paymentRepositoryImpl;
-	@Autowired YamlBankProperties yamlBankProperties;
-	
-	
-	@PostMapping(value = "/addPayment",consumes = {"application/json"},produces = {"application/json"})
+
+	@Autowired
+	PaymentRepositoryImpl paymentRepositoryImpl;
+	@Autowired
+	YamlBankProperties yamlBankProperties;
+
+	private static Logger logger = LogManager.getLogger(PaymentController.class);
+
+	@PostMapping(value = "/addPayment", consumes = { "application/json" }, produces = { "application/json" })
 	@ResponseBody
-	public ResponseEntity addPayment(@Valid @RequestBody PaymentRequest paymentRequest) {
-		System.out.println("check data request: " + paymentRequest);
-		System.out.println("check yaml: " + yamlBankProperties.getBanks());
-		for (Bank bank : yamlBankProperties.getBanks()) {
-			System.out.println("bank:" + bank);
+	public ResponseEntity<PaymentResponse> addPayment(@Valid @RequestBody PaymentRequest paymentRequest) throws Exception {
+		logger.info("PaymentRequest: "+ paymentRequest.getTokenKey() +"--"+ paymentRequest.toString());
+		String bankCodeReq = paymentRequest.getBankCode();
+		List<Bank> listBank = yamlBankProperties.getBanks();
+		if (listBank.stream().filter(b -> b.getBankCode().equals(bankCodeReq)).collect(Collectors.toList()).size() == 0) {
+			return new ResponseEntity<>(new PaymentResponse("02", "bank does not exist"), HttpStatus.BAD_REQUEST);
 		}
-//		Payment payment = new Payment();
-//		payment.setId(1L);
-//		payment.setBankCode(2759L);
-//		payment.setTokentKey("abc1234");
-//		payment.setJsonData("4321abcd");
-//		paymentRepositoryImpl.save(payment);
-		return new ResponseEntity<>(HttpStatus.OK);
+		// checkSum
+		String privateKey = listBank.stream().filter(b -> b.getBankCode().equals(bankCodeReq))
+				.collect(Collectors.toList()).get(0).getPrivateKey();
+		
+		String hmacCheckSum = paymentRequest.getMobile() + bankCodeReq + paymentRequest.getAccountNo()
+				+ paymentRequest.getPayDate() + paymentRequest.getDebitAmount() + paymentRequest.getRespCode()
+				+ paymentRequest.getTraceTransfer() + paymentRequest.getMessageType() + privateKey;
+		
+		String encodeCheckSum = sha256Hmac.encode(hmacCheckSum, privateKey);
+		System.out.println("Check encode: "+ encodeCheckSum);
+		if(!encodeCheckSum.equals(paymentRequest.getCheckSum())) {
+			return new ResponseEntity<>(new PaymentResponse("03","error"), HttpStatus.BAD_REQUEST);
+		}
+		try {
+			paymentRepositoryImpl.save(new Payment(paymentRequest.getTokenKey(), paymentRequest.getBankCode(), paymentRequest.toString()));
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("Save data to redis error: {}", e.getMessage());
+		}
+		
+		return new ResponseEntity<>(new PaymentResponse("00", "success"),HttpStatus.OK);
 	}
+
 	@GetMapping(value = "/detail")
-	public String findPayment(@RequestParam long id) {
-		String data = paymentRepositoryImpl.find(id).toString();
+	public String findPayment(@RequestParam String tokenKey) {
+		logger.info("Get detail by TokenKey ");
+		String data = "";
+		try {
+			data = paymentRepositoryImpl.find(tokenKey).toString();
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("Get detail by TokenKey error: "+ e.getMessage());
+		}
 		return data;
 	}
 }
