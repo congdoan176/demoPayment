@@ -41,11 +41,12 @@ public class PaymentController {
 	@PostMapping(value = "/addPayment", consumes = { "application/json" }, produces = { "application/json" })
 	@ResponseBody
 	public ResponseEntity<PaymentResponse> addPayment(@Valid @RequestBody PaymentRequest paymentRequest) throws Exception {
-		logger.info("PaymentRequest: "+ paymentRequest.getTokenKey() +"--"+ paymentRequest.toString());
+		logger.info("PaymentRequest: TokenKey-{},Data-{}", paymentRequest.getTokenKey() ,paymentRequest.toString());
 		String bankCodeReq = paymentRequest.getBankCode();
 		List<Bank> listBank = yamlBankProperties.getBanks();
 		if (listBank.stream().filter(b -> b.getBankCode().equals(bankCodeReq)).collect(Collectors.toList()).size() == 0) {
-			return new ResponseEntity<>(new PaymentResponse("02", "bank does not exist"), HttpStatus.BAD_REQUEST);
+			logger.info("Response check bank error: {}", new PaymentResponse("02", "Bank does not exist"));
+			return new ResponseEntity<>(new PaymentResponse("02", "Bank does not exist"), HttpStatus.BAD_REQUEST);
 		}
 		// checkSum
 		String privateKey = listBank.stream().filter(b -> b.getBankCode().equals(bankCodeReq))
@@ -56,9 +57,9 @@ public class PaymentController {
 				+ paymentRequest.getTraceTransfer() + paymentRequest.getMessageType() + privateKey;
 		
 		String encodeCheckSum = sha256Hmac.encode(hmacCheckSum, privateKey);
-		System.out.println("Check encode: "+ encodeCheckSum);
 		if(!encodeCheckSum.equals(paymentRequest.getCheckSum())) {
-			return new ResponseEntity<>(new PaymentResponse("03","error"), HttpStatus.BAD_REQUEST);
+			logger.info("Response checkSum error: {}", new PaymentResponse("03", "CheckSum incorrect or non-existent"));
+			return new ResponseEntity<>(new PaymentResponse("03","CheckSum incorrect or non-existent"), HttpStatus.BAD_REQUEST);
 		}
 		try {
 			paymentRepositoryImpl.save(new Payment(paymentRequest.getTokenKey(), paymentRequest.getBankCode(), paymentRequest.toString()));
@@ -66,7 +67,7 @@ public class PaymentController {
 			// TODO: handle exception
 			logger.error("Save data to redis error: {}", e.getMessage());
 		}
-		
+		logger.info("Response : " + new PaymentResponse("00", "success"));
 		return new ResponseEntity<>(new PaymentResponse("00", "success"),HttpStatus.OK);
 	}
 

@@ -33,8 +33,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	        .stream()
 	        .map(DefaultMessageSourceResolvable::getDefaultMessage)
 	        .collect(Collectors.toList());
-	    	logger.error("MethodArgumentNotValidException: "+errors);
-	    body.put("code", String.valueOf(01));
+	    	logger.error("MethodArgumentNotValidException: {}, Code respone: {}",errors, 01);
+	    	body.put("code", String.valueOf(01));
 	    
 	    return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
 	  }
