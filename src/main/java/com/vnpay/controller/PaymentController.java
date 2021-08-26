@@ -55,8 +55,8 @@ public class PaymentController {
 		String hmacCheckSum = paymentRequest.getMobile() + bankCodeReq + paymentRequest.getAccountNo()
 				+ paymentRequest.getPayDate() + paymentRequest.getDebitAmount() + paymentRequest.getRespCode()
 				+ paymentRequest.getTraceTransfer() + paymentRequest.getMessageType() + privateKey;
-		
 		String encodeCheckSum = sha256Hmac.encode(hmacCheckSum, privateKey);
+		System.out.println("sum: "+ encodeCheckSum);
 		if(!encodeCheckSum.equals(paymentRequest.getCheckSum())) {
 			logger.info("Response checkSum error: {}", new PaymentResponse("03", "CheckSum incorrect or non-existent"));
 			return new ResponseEntity<>(new PaymentResponse("03","CheckSum incorrect or non-existent"), HttpStatus.BAD_REQUEST);

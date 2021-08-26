@@ -35,6 +35,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	        .collect(Collectors.toList());
 	    	logger.error("MethodArgumentNotValidException: {}, Code respone: {}",errors, 01);
 	    	body.put("code", String.valueOf(01));
+	    	body.put("message", errors.toString());
 	    
 	    return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
 	  }
