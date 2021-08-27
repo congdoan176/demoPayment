@@ -1,4 +1,4 @@
-package com.vnpay.api;
+package com.vnpay.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

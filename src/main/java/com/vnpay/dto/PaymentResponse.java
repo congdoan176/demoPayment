@@ -1,4 +1,4 @@
-package com.vnpay.api;
+package com.vnpay.dto;
 
 import lombok.Data;
 

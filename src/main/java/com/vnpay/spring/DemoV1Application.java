@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @SpringBootApplication
 @ComponentScan("com.vnpay")
@@ -27,6 +28,7 @@ public class DemoV1Application {
 		final RedisTemplate template = new RedisTemplate();
 		template.setConnectionFactory(jedisConnectionFactory());
 		template.setValueSerializer(new GenericToStringSerializer(Object.class));
+		template.setHashKeySerializer(new StringRedisSerializer());
 		return template;
 	}
 }
