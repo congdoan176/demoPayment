@@ -17,11 +17,11 @@ public class PaymentRepositoryImpl implements PaymentRepository{
 	
 	private static final String KEY = "Payment";
 
-	private RedisTemplate redisTemplate;
-	private HashOperations hashOperations;
+	private RedisTemplate<String, ?> redisTemplate;
+	private HashOperations<String, String, Payment> hashOperations;
 	
 	@Autowired
-	public PaymentRepositoryImpl(RedisTemplate redisTemplate) {
+	public PaymentRepositoryImpl(RedisTemplate<String, ?> redisTemplate) {
 		this.redisTemplate = redisTemplate;
 	}
 

@@ -37,9 +37,9 @@ public class PaymentRequest {
 	String orderCode;
 	@NotNull
 	String userName;
-	@NotNull
+	@NotNull(message = "realAmount not Null")
 	long realAmount;
-	@NotNull
-	@NotBlank
+	@NotNull(message = "Promotion Code Null")
+	@NotBlank(message = "Promotion Code Blank")
 	String promotionCode;
 }
