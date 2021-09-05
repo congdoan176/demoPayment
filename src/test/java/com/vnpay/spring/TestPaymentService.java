@@ -4,20 +4,22 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
 
 import com.vnpay.model.Bank;
 import com.vnpay.service.PaymentService;
 
 @SpringBootTest
-class DemoV1ApplicationTests {
-	
-	@Autowired
-	private ApplicationContext context;
+public class TestPaymentService {
+
 	@Autowired
 	PaymentService paymentService;
 	
 	@Test
-	void contextLoads() {
+	public void testCheckBankCode() {
+		Bank bank = new Bank();
+		bank.setBankCode("970445");
+		bank.setPrivateKey("xyz7891");
+		bank.setIps("");
+		Assertions.assertEquals(bank, paymentService.checkBankcode("970445"));
 	}
 }

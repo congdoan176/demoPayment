@@ -43,7 +43,7 @@ public class PaymentService {
 			paymentRepositoryImpl.save(new Payment(paymentRequest.getTokenKey(), paymentRequest.getBankCode(), paymentRequest.toString()));
 		} catch (Exception e) {
 			// TODO: handle exception
-			logger.error("Save data to redis error: {}", e);
+			logger.info("Save data to redis error: {}", e);
 		}
 		logger.info("Response : " + new PaymentResponse(StatusCode.SAVE_PAYMENT_SUCCESS, "success"));
 		return new PaymentResponse(StatusCode.SAVE_PAYMENT_SUCCESS, "success");
@@ -55,7 +55,7 @@ public class PaymentService {
 			payment = paymentRepositoryImpl.find(tokenKey);
 		} catch (Exception e) {
 			// TODO: handle exception
-			logger.error("Get detail by TokenKey error: "+ e.getMessage());
+			logger.info("Get detail by TokenKey error: "+ e);
 		}
 		return payment;
 	}
@@ -75,8 +75,6 @@ public class PaymentService {
 				+ paymentRequest.getTraceTransfer() + paymentRequest.getMessageType() + privateKey;
 		
 		String encodeCheckSum = sha256Hmac.encode(hmacCheckSum, privateKey);
-		
-		System.out.println("sum: "+ encodeCheckSum);
 		if(encodeCheckSum.equals(paymentRequest.getCheckSum())) {
 			return true;
 		}
