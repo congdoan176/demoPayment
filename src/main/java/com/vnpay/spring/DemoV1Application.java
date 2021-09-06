@@ -2,7 +2,7 @@ package com.vnpay.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -15,7 +15,10 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class DemoV1Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoV1Application.class, args);
+		ApplicationContext applicationContext = SpringApplication.run(DemoV1Application.class, args);
+		for (String name : applicationContext.getBeanDefinitionNames()) {
+			System.out.println(name);
+		}
 	}
 	
 	@Bean

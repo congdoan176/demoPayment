@@ -7,7 +7,9 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.vnpay.model.Payment;
 import com.vnpay.repository.PaymentRepository;
@@ -32,7 +34,13 @@ public class PaymentRepositoryImpl implements PaymentRepository{
 	
 	public void save(Payment payment) {
 		// TODO Auto-generated method stub
-		hashOperations.put(KEY, payment.getTokenKey(), payment);
+		try {
+			hashOperations.put(KEY, payment.getTokenKey(), payment);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("save: "+ e);
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
 	}
 	public Payment find(String tokenKey) {
 		// TODO Auto-generated method stub

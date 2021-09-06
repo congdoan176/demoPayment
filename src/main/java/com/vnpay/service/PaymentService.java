@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.vnpay.config.YamlBankProperties;
 import com.vnpay.controller.PaymentController;
@@ -43,7 +45,8 @@ public class PaymentService {
 			paymentRepositoryImpl.save(new Payment(paymentRequest.getTokenKey(), paymentRequest.getBankCode(), paymentRequest.toString()));
 		} catch (Exception e) {
 			// TODO: handle exception
-			logger.info("Save data to redis error: {}", e);
+			logger.info("Save data to redis error: ", e);
+			return new PaymentResponse(StatusCode.SAVE_PAYMENT_ERROR, "Save data error");
 		}
 		logger.info("Response : " + new PaymentResponse(StatusCode.SAVE_PAYMENT_SUCCESS, "success"));
 		return new PaymentResponse(StatusCode.SAVE_PAYMENT_SUCCESS, "success");
@@ -55,7 +58,8 @@ public class PaymentService {
 			payment = paymentRepositoryImpl.find(tokenKey);
 		} catch (Exception e) {
 			// TODO: handle exception
-			logger.info("Get detail by TokenKey error: "+ e);
+			logger.info("Get detail by TokenKey error: ", e);
+			
 		}
 		return payment;
 	}

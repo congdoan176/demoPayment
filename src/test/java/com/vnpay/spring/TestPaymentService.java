@@ -20,6 +20,6 @@ public class TestPaymentService {
 		bank.setBankCode("970445");
 		bank.setPrivateKey("xyz7891");
 		bank.setIps("");
-		Assertions.assertEquals(bank, paymentService.checkBankcode("970445"));
+	 	Assertions.assertEquals(bank, paymentService.checkBankcode("970445"));
 	}
 }
