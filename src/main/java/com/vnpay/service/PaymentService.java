@@ -17,6 +17,7 @@ import com.vnpay.dto.PaymentResponse;
 import com.vnpay.model.Bank;
 import com.vnpay.model.Payment;
 import com.vnpay.repositoryImpl.PaymentRepositoryImpl;
+import com.vnpay.util.Message;
 import com.vnpay.util.StatusCode;
 import com.vnpay.util.sha256Hmac;
 
@@ -34,32 +35,31 @@ public class PaymentService {
 		logger.info("PaymentRequest: TokenKey-{}, Data-{}", paymentRequest.getTokenKey() ,paymentRequest.toString());
 		Bank  bank = checkBankcode(paymentRequest.getBankCode());
 		if(null == bank) {
-			return new PaymentResponse(StatusCode.BANK_CODE_NOT_EXIST, "Bank does not exist");
+			return new PaymentResponse(StatusCode.BANK_CODE_NOT_EXIST, Message.MSG_BANKCODE_ERROR);
 		}
 		// checkSum
 		if (!hmacCheckSum(paymentRequest, bank.getPrivateKey())) {
-			logger.info("Response checkSum error: {}", new PaymentResponse(StatusCode.CHECK_SUM_ERROR, "CheckSum incorrect or non-existent"));
-			return new PaymentResponse(StatusCode.CHECK_SUM_ERROR,"CheckSum incorrect or non-existent");
+			logger.info("Response checkSum error: {}", new PaymentResponse(StatusCode.CHECK_SUM_ERROR, Message.MSG_CHECKSUM_ERROR));
+			return new PaymentResponse(StatusCode.CHECK_SUM_ERROR,Message.MSG_CHECKSUM_ERROR);
 		}
 		try {
 			paymentRepositoryImpl.save(new Payment(paymentRequest.getTokenKey(), paymentRequest.getBankCode(), paymentRequest.toString()));
 		} catch (Exception e) {
 			// TODO: handle exception
 			logger.info("Save data to redis error: ", e);
-			return new PaymentResponse(StatusCode.SAVE_PAYMENT_ERROR, "Save data error");
+			return new PaymentResponse(StatusCode.SAVE_PAYMENT_ERROR, Message.MSG_SAVE_ERROR);
 		}
-		logger.info("Response : " + new PaymentResponse(StatusCode.SAVE_PAYMENT_SUCCESS, "success"));
-		return new PaymentResponse(StatusCode.SAVE_PAYMENT_SUCCESS, "success");
+		logger.info("Response : " + new PaymentResponse(StatusCode.SAVE_PAYMENT_SUCCESS, Message.MSG_SAVE_SUCCESS));
+		return new PaymentResponse(StatusCode.SAVE_PAYMENT_SUCCESS, Message.MSG_SAVE_SUCCESS);
 	}
 	public Payment findPaymentByTokenKey(String tokenKey) {
-		logger.info("Get detail by TokenKey ");
+		logger.info("Get detail by TokenKey: ", tokenKey);
 		Payment payment = null;
 		try {
 			payment = paymentRepositoryImpl.find(tokenKey);
 		} catch (Exception e) {
 			// TODO: handle exception
 			logger.info("Get detail by TokenKey error: ", e);
-			
 		}
 		return payment;
 	}
