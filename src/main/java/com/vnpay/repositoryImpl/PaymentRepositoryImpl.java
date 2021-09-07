@@ -38,7 +38,6 @@ public class PaymentRepositoryImpl implements PaymentRepository{
 			hashOperations.put(KEY, payment.getTokenKey(), payment);
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("save: "+ e);
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 	}

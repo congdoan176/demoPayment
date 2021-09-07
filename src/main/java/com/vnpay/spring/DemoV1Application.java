@@ -15,10 +15,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class DemoV1Application {
 
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = SpringApplication.run(DemoV1Application.class, args);
-		for (String name : applicationContext.getBeanDefinitionNames()) {
-			System.out.println(name);
-		}
+		SpringApplication.run(DemoV1Application.class, args);
 	}
 	
 	@Bean
@@ -27,10 +24,10 @@ public class DemoV1Application {
 	}
 
 	@Bean
-	public RedisTemplate redisTemplate() {
-		final RedisTemplate template = new RedisTemplate();
+	public RedisTemplate<?, ?> redisTemplate() {
+		final RedisTemplate<?, ?> template = new RedisTemplate<>();
 		template.setConnectionFactory(jedisConnectionFactory());
-		template.setValueSerializer(new GenericToStringSerializer(Object.class));
+		template.setValueSerializer(new GenericToStringSerializer<Object>(Object.class));
 		template.setHashKeySerializer(new StringRedisSerializer());
 		return template;
 	}
