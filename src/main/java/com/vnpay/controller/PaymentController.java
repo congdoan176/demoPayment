@@ -1,7 +1,10 @@
 package com.vnpay.controller;
 
+import java.util.UUID;
+
 import javax.validation.Valid;
 
+import org.apache.logging.log4j.ThreadContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +28,16 @@ public class PaymentController {
 	@PostMapping(value = "/addPayment", consumes = { "application/json" }, produces = { "application/json" })
 	@ResponseBody
 	public ResponseEntity<PaymentResponse> addPayment(@Valid @RequestBody PaymentRequest paymentRequest) throws Exception {
-		return new ResponseEntity<>(paymentService.savePayment(paymentRequest), HttpStatus.OK);
+		ThreadContext.put("token", UUID.randomUUID().toString());
+		PaymentResponse paymentResponse = new PaymentResponse();
+		try {
+			paymentResponse = paymentService.savePayment(paymentRequest);
+		} finally {
+			ThreadContext.pop();
+	        ThreadContext.clearAll();
+		}
+		return new ResponseEntity<>(paymentResponse, HttpStatus.OK);
+		
 	}
 
 	@GetMapping(value = "/detail")
