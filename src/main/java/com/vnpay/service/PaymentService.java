@@ -15,6 +15,7 @@ import com.vnpay.dto.PaymentResponse;
 import com.vnpay.model.Bank;
 import com.vnpay.model.Payment;
 import com.vnpay.repositoryImpl.PaymentRepositoryImpl;
+import com.vnpay.util.JedisUtil;
 import com.vnpay.util.Message;
 import com.vnpay.util.StatusCode;
 import com.vnpay.util.sha256Hmac;
@@ -26,6 +27,8 @@ public class PaymentService {
 	PaymentRepositoryImpl paymentRepositoryImpl;
 	@Autowired
 	YamlBankProperties yamlBankProperties;
+	@Autowired
+	private JedisUtil jedisUtil;
 
 	private static Logger logger = LogManager.getLogger(PaymentController.class);
 	
@@ -41,7 +44,7 @@ public class PaymentService {
 			return new PaymentResponse(StatusCode.CHECK_SUM_ERROR,Message.MSG_CHECKSUM_ERROR);
 		}
 		try {
-			paymentRepositoryImpl.save(new Payment(paymentRequest.getTokenKey(), paymentRequest.getBankCode(), paymentRequest.toString()));
+			jedisUtil.save(paymentRequest.getTokenKey(), paymentRequest.getBankCode(), paymentRequest.toString());
 		} catch (Exception e) {
 			// TODO: handle exception
 			logger.info("Save data to redis error: ", e);

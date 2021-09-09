@@ -8,10 +8,7 @@
         <RollingFile name="info-log" fileName="${log-path}/info.log" append="true"
                      filePattern="${log-path}/$${date:yyyy-MM}/info-%d{yyyyMMdd}-%i.log.gz">
             <Filters>
-                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
                 <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
             </Filters>
             <PatternLayout>
                 <pattern>${pattern}</pattern>
@@ -24,10 +21,7 @@
         <RollingFile name="warn-log" fileName="${log-path}/warn.log" append="true"
                      filePattern="${log-path}/$${date:yyyy-MM}/warn-%d{yyyyMMdd}-%i.log.gz">
             <Filters>
-                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
                 <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
             </Filters>
             <PatternLayout>
                 <pattern>${pattern}</pattern>
@@ -41,9 +35,6 @@
                      filePattern="${log-path}/$${date:yyyy-MM}/error-%d{yyyyMMdd}-%i.log.gz">
             <Filters>
                 <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
             </Filters>
             <PatternLayout>
                 <pattern>${pattern}</pattern>
@@ -56,9 +47,6 @@
         <RollingFile name="debug-log" fileName="${log-path}/debug.log" append="true"
                      filePattern="${log-path}/$${date:yyyy-MM}/debug-%d{yyyyMMdd}-%i.log.gz">
             <Filters>
-                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
                 <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
             </Filters>
             <PatternLayout>
@@ -69,7 +57,7 @@
             </Policies>
             <DefaultRolloverStrategy max="500"/>
         </RollingFile>
-        <RollingFile name="Server" fileName="${log-path}/server.log" append="true"
+        <RollingFile name="sping" fileName="${log-path}/spring.log" append="true"
                      filePattern="${log-path}/$${date:yyyy-MM}/server-%d{yyyyMMdd}-%i.log.gz">
 
             <PatternLayout>
@@ -86,8 +74,8 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="warn">
-            <AppenderRef ref="Server" level="warn"/>
+        <Root level="debug">
+            <AppenderRef ref="sping" level="debug"/>
             <AppenderRef ref="Console"/>
         </Root>
         <Logger name="vn.vnpay" level="debug" additivity="false">
